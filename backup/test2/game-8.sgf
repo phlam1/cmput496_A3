@@ -1,0 +1,15 @@
+(;FF[4]CA[UTF-8]AP[gogui-twogtp:1.4.9]SZ[5]
+KM[6.5]PB[Go3]PW[Go4]DT[2017-03-21]RE[W+31.5]
+C[Black command: cmput496_A3/Go3/Go3.py
+White command: cmput496_A3/Go4/Go4.py -s 50
+Black version: 0.22
+White version: 0.3
+Result[Black\]: W+31.5
+Result[White\]: W+31.5
+Host: ohaton (Intel(R) Xeon(R) CPU           X5460  @ 3.16GHz)
+Date: March 21, 2017 5:31:05 AM MDT]
+;B[be];W[cd];B[bc];W[dd];B[bd];W[db];B[ad];W[cb];B[cc];W[dc]
+;B[de];W[ed];B[ea];W[ce];B[bb];W[ee];B[ae];W[ac];B[ba];W[ec]
+;B[ca];W[da];B[ab];W[eb];B[ac];W[aa];B[ae];W[be];B[ad];W[bd]
+;B[ac];W[bc];B[ab];W[bb];B[ae];W[ad];B[ac];W[ab];B[ba];W[ca]
+;B[];W[])

@@ -1,0 +1,15 @@
+(;FF[4]CA[UTF-8]AP[gogui-twogtp:1.4.9]SZ[5]
+KM[6.5]PB[Go4:0.3]PW[Go4:0.3]DT[2017-03-21]RE[W+18.5]
+C[Black command: cmput496_A3/Go4/Go4.py -no_ad -s 50
+White command: cmput496_A3/Go4Orig/Go4.py
+Black version: 0.3
+White version: 0.3
+Result[Black\]: W+18.5
+Result[White\]: W+18.5
+Host: ua01 (Intel(R) Core(TM)2 CPU          6600  @ 2.40GHz)
+Date: March 21, 2017 7:33:28 AM MDT]
+;B[dc];W[ac];B[de];W[cc];B[dd];W[bd];B[be];W[db];B[cd];W[bc]
+;B[ba];W[ed];B[eb];W[ee];B[ea];W[ab];B[ae];W[cb];B[ec];W[ed]
+;B[da];W[ca];B[ee];W[bb];B[ad];W[aa];B[ba];W[bd];B[ac];W[bc]
+;B[ab];W[cc];B[bb];W[cb];B[db];W[];B[ca];W[bd];B[bc];W[cc]
+;B[cb];W[];B[])

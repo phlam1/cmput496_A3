@@ -17,6 +17,6 @@ $TWOGTP -black "$NOGO1" -white "$NOGO2" \
 $TWOGTP -analyze $RESULTDIR/game.dat -force
 }
 
-NUGAMES=1
+NUGAMES=100
 BOARDSIZE=5
 run

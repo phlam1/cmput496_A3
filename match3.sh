@@ -1,10 +1,10 @@
 #!/bin/bash
 set -eu
-RESULTDIR="backup/test2"
+RESULTDIR="backup/test3"
 # Modify paths to your programs below as needed
-NOGO1="cmput496_A3/Go3/Go3.py"
-NOGO2="cmput496_A3/Go4/Go4.py -s 50"
-TWOGTP="gogui-twogtp"
+NOGO1="cmput496_A3/Go4Orig/Go4.py"
+NOGO2="cmput496_A3/Go4/Go4.py -no_ad -s 50"
+TWOGTP="gogui-1.4.9/bin/gogui-twogtp"
 
 run() {
 echo Match with $NUGAMES games on board size $BOARDSIZE. Storing results in $RESULTDIR
@@ -12,7 +12,7 @@ echo Match with $NUGAMES games on board size $BOARDSIZE. Storing results in $RES
 mkdir -p $RESULTDIR
 $TWOGTP -black "$NOGO1" -white "$NOGO2" \
 -auto  -komi 6.5 -size $BOARDSIZE -games $NUGAMES \
--sgffile $RESULTDIR/game -alternate -threads 9
+-sgffile $RESULTDIR/game -alternate -threads 3
 
 $TWOGTP -analyze $RESULTDIR/game.dat -force
 }
