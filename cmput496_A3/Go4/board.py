@@ -469,6 +469,26 @@ class GoBoard(object):
         """
         #row,col = self._point_to_coord(point)
         #if 0 <= row <= self.size+1 and 0 <= col <= self.size+1:
+        return [point-1, point+1, point-self.NS, point+self.NS]
+        #return self._border_removal([point-1, point+1, point-self.NS, point+self.NS])
+        #else:
+        #    raise ValueError("This point is out of range!")
+        
+    def _ADneighbors(self,point):
+        """
+        All neighbors of the point
+        Arguments
+        ---------
+        point
+
+        Returns
+        -------
+        points : list of int
+            coordinate of points which are neighbors of the given point
+        """
+        #row,col = self._point_to_coord(point)
+        #if 0 <= row <= self.size+1 and 0 <= col <= self.size+1:
+        #return [point-1, point+1, point-self.NS, point+self.NS]
         return self._border_removal([point-1, point+1, point-self.NS, point+self.NS])
         #else:
         #    raise ValueError("This point is out of range!")
@@ -667,7 +687,8 @@ class GoBoard(object):
             #loops through all flood neighbors
             for i in f_neighbors:
                 #if neighbor is opponent
-                if i == GoBoardUtil.opponent(color):
+                 #if self._on_board(n) and fboard[n] == color:
+                if self.get_color(i) == GoBoardUtil.opponent(color):
                     surrounding_opponents.add(i)
                     
         surrounding_opponents = list(surrounding_opponents)

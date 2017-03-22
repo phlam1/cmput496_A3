@@ -126,35 +126,38 @@ class GoBoardUtil(object):
         moves = set()
         
         #Check Atari for all neighbors of last move
-        neighbors = board._neighbors(last_move);
+        neighbors = board._ADneighbors(last_move);
         
         #Loops through neighbors
         for i in neighbors:
-            neighbor_liberty, last_liberty_point = board._liberty_point(i, color)
+            if color == board.get_color(i):
+                
+                neighbor_liberty, last_liberty_point = board._liberty_point(i, color)
             
-            #Only consider blocks placed in atari
-            if neighbor_liberty == 1:
+                #Only consider blocks placed in atari
+                if neighbor_liberty == 1:
                 
-                #Atari Defense part 1 "run away"
-                for move in last_liberty_point:
+                    #Atari Defense part 1 "run away"
+                    for move in last_liberty_point:
+                        cboard = board.copy()
+                        (status, msg) = cboard._play_move(move, color)
+                        if status == True:
+                            #Check if liberty has increased or not
+                            if cboard._liberty(i, color) > 1:
+                                moves.add(move)
+                
+                
+                    #Atari Defense part 2 "capture"
                     cboard = board.copy()
-                    (status, msg) = cboard._play_move(move, color)
-                    if status == True:
-                        #Check if liberty has increased or not
-                        if cboard._liberty(i, color) > 1:
-                            moves.add(move)
+                    fboard = cboard._flood_fill(i)
+                    opponent_neighbors = cboard._flood_opponents(fboard,color)
                 
-                #Atari Defense part 2 "capture"
-                cboard = board.copy()
-                fboard = cboard._flood_fill(i)
-                opponent_neighbors = cboard._flood_opponents(fboard,color)
+                    for opponent in opponent_neighbors:
+                        cboard.last_move = opponent
+                        #loop through opponents and see if you can capture in one move
+                        move = GoBoardUtil.generate_atari_capture_moves(cboard)
+                        moves = moves.union(move)
                 
-                for opponent in opponent_neighbors:
-                    cboard.last_move = opponent
-                    #loop through opponents and see if you can capture in one move
-                    move = GoBoardUtil.generate_atari_capture_moves(cboard)
-                    if move != None:
-                        moves.add(move)
         
         
         if not moves:            
@@ -276,7 +279,7 @@ class GoBoardUtil(object):
         if move == None and atari_defence:
             moves = GoBoardUtil.generate_atari_defense_moves(board)
             move = GoBoardUtil.filter_moves_and_generate(board, moves, check_selfatari)
-        if use_pattern:
+        if move == None and use_pattern:
             moves = GoBoardUtil.generate_pattern_moves(board)
             move = GoBoardUtil.filter_moves_and_generate(board, moves, 
                                                          check_selfatari)
